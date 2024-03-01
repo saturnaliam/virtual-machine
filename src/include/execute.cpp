@@ -19,7 +19,20 @@ void execute_instruction() {
       break;
     case 0x3: // SUBC x,y
       break;
-    case 0x4: // MVR x,y
+    case 0x4: { // MVX x
+      const u16 x = get_dword();
+      const u8 x_value = ram[x]; // gets the value stored at x
+
+      ix = x_value;
       break;
+    }
+
+    case 0x5: {
+      const u16 x = get_dword();
+      const u8 x_value = ram[x];
+
+      iy = x_value;
+      break;
+    }
   }
 }
